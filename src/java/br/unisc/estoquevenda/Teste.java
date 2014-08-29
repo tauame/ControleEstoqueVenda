@@ -13,5 +13,6 @@ package br.unisc.estoquevenda;
 public class Teste {
     public void main (String args[]){
     
+        int a =5;
     }
 }

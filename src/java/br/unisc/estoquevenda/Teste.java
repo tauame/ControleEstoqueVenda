@@ -11,5 +11,7 @@ package br.unisc.estoquevenda;
  * @author tauame
  */
 public class Teste {
+    public void main (String args[]){
     
+    }
 }

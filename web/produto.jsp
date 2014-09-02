@@ -14,11 +14,11 @@
     <body>
        <h1>Cadastro de produtos</h1>
         
-        <form action="FornecedorServlet">
-            Codigo de barras: <input type="text" name="codbarras"/></br>
-            Nome: <input type="text" name="nome"/></br>
-            Fabricante: <input type="text" name="fabricante"/></br>
-            Modelo: <input type="text" name="modelo"/></br>
+        <form action="ProdutoServlet"method="post">
+            Nome:<input type="text" name="nome" id="nome"/></br>
+            Cod Barras:<input type="text" name="cod_barras" id="cod_barras"/></br>
+            Fabricante<input type="text" name="fabricante" id="fabricante"/></br>
+            Modelo:<input type="text" name="modelo" id="modelo"/></br>
             <input type="submit" value="Salvar"/>
         </form>
     </body>

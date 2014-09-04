@@ -7,6 +7,7 @@
 package br.unisc.db;
 
 import br.unisc.model.Produto;
+import br.unisc.utils.Config;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -43,7 +44,7 @@ public class ProdutoDB {
             prep.setString(1, produto.getNome());
             prep.setString(2, produto.getCodBarras());
             prep.setString(3, produto.getFabricante());
-            prep.setString(3, produto.getModelo());
+            prep.setString(4, produto.getModelo());
             prep.execute();
             
         } catch (SQLException ex) {
@@ -66,7 +67,7 @@ public class ProdutoDB {
     }
     
     public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/pooIII", "postgres", "affsd");
+        return DriverManager.getConnection("jdbc:postgresql://"+Config.get("host")+":5432/"+Config.get("database"), Config.get("user"), Config.get("pass"));
     }
     
     public void atualizar(Produto produto){

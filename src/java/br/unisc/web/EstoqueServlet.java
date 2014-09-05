@@ -31,7 +31,7 @@ public class EstoqueServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("Use os links de navegação!");
+            out.println("Testando EstoqueServelet.processRequest - EstoqueServelet.java");
         }
     }
 
@@ -48,6 +48,11 @@ public class EstoqueServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("Testando EstoqueServelet.doGet - EstoqueServelet.java");
+        }
     }
 
     /**
@@ -60,8 +65,25 @@ public class EstoqueServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
+        try (PrintWriter out = response.getWriter()){
+            out.println("Chamou POST - EstoqueServelet.doPost (EstoqueServelet.java).</br>");
+            Estoque estoq = new Estoque();
+            estoq.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
+            estoq.setCod_estoque(Integer.valueOf(request.getParameter("cod_estoque")));
+            estoq.setQtd_produto(Integer.valueOf(request.getParameter("qtd_produto")));
+            estoq.setValidade(request.getParameter("validade"));
+        
+            EstoqueDB estoqDB = new EstoqueDB();
+            estoqDB.inserir(estoq);
+            
+            out.println("cadástro com Sucesso.</br></br>");
+            out.println("<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EstoqueServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 

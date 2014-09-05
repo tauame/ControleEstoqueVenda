@@ -1,7 +1,11 @@
 package br.unisc.web;
 
+import br.unisc.db.ProdutoDB;
+import br.unisc.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,6 +62,22 @@ public class ProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Produto prod = new Produto();
+        prod.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
+        prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
+        prod.setNome(request.getParameter("nome"));
+        prod.setFabricante(request.getParameter("fabricante"));
+        prod.setModelo(request.getParameter("modelo"));
+        
+        try {
+            ProdutoDB prodDB = new ProdutoDB();
+            prodDB.inserir(prod);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     /**

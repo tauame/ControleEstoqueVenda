@@ -34,7 +34,7 @@ public class ProdutoDB {
             Connection conn = getConnection();
             PreparedStatement prep = conn.prepareStatement(sql);
             prep.setString(1, produto.getNome());
-            prep.setString(2, produto.getCodBarras());
+            prep.setInt(2, produto.getCod_barras());
             prep.setString(3, produto.getFabricante());
             prep.setString(4, produto.getModelo());
             prep.execute();
@@ -65,7 +65,7 @@ public class ProdutoDB {
             Connection conn = getConnection();
             PreparedStatement prep = conn.prepareStatement(sql);
             prep.setString(1, produto.getNome());
-            prep.setString(2, produto.getCodBarras());
+            prep.setInt(2, produto.getCod_barras());
             prep.setString(3, produto.getFabricante());
             prep.setString(4, produto.getModelo());
             prep.execute();
@@ -86,9 +86,9 @@ public class ProdutoDB {
             
             while (rs.next()){
                 Produto objprodutoList = new Produto();
-                objprodutoList.setCodProd(rs.getInt("cod_produto"));
+                objprodutoList.setCod_produto(rs.getInt("cod_produto"));
+                objprodutoList.setCod_barras(rs.getInt("cod_barras"));
                 objprodutoList.setNome(rs.getString("nome"));
-                objprodutoList.setCodBarras(rs.getString("cod_barras"));
                 objprodutoList.setFabricante(rs.getString("fabricante"));
                 objprodutoList.setModelo(rs.getString("modelo"));
                 

@@ -8,15 +8,15 @@ public class Produto {
     
     private int cod_produto;
     private String nome;
-    private String cod_barras;
+    private int cod_barras;
     private String fabricante;
     private String modelo;
 
-    public int getCodProd() {
+    public int getCod_produto() {
         return cod_produto;
     }
 
-    public void setCodProd(int cod_produto) {
+    public void setCod_produto(int cod_produto) {
         this.cod_produto = cod_produto;
     }
 
@@ -28,11 +28,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getCodBarras() {
+    public int getCod_barras() {
         return cod_barras;
     }
 
-    public void setCodBarras(String cod_barras) {
+    public void setCod_barras(int cod_barras) {
         this.cod_barras = cod_barras;
     }
 
@@ -44,12 +44,11 @@ public class Produto {
         this.fabricante = fabricante;
     }
 
-
     public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo){        
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 }

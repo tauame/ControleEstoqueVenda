@@ -12,14 +12,34 @@
         <title>JSP Page</title>
     </head>
     <body>
-       <h1>Cadastro de produtos</h1>
+        <h1>Cadastrar Produtos</h1>
         
-        <form action="ProdutoServlet"method="post">
-            Nome:<input type="text" name="nome" id="nome"/></br>
-            Cod Barras:<input type="text" name="cod_barras" id="cod_barras"/></br>
-            Fabricante<input type="text" name="fabricante" id="fabricante"/></br>
-            Modelo:<input type="text" name="modelo" id="modelo"/></br>
-            <input type="submit" value="Salvar"/>
-        </form>
+        <form action="FornecedorServlet" method="post">
+            <table>
+                <tr>
+                    <td> Nome: </td>
+                    <td> <input type="text" name="nome" id="nome"/> </td>
+                </tr>
+                <tr>
+                    <td> Código Barras: </td>
+                    <td> <input type="text" name="cod_barras" id="cod_barras"/> </td>
+                </tr>
+                <tr>
+                    <td> Fabricante: </td>
+                    <td> <input type="text" name="fabricante" id="fabricante"/> </td>
+                </tr>
+                <tr>
+                    <td> Modelo: </td>
+                    <td> <input type="text" name="modelo" id="modelo"/> </td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> <input type="submit" value="Inserir Produto"/> </td>
+                </tr>
+            </table>
+        </form>  
+        
+        <h3> <a href="index.jsp"> Volar </a> </h3>
+        
     </body>
 </html>

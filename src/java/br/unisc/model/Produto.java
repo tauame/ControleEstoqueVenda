@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.unisc.model;
 
 /**
@@ -12,18 +6,18 @@ package br.unisc.model;
  */
 public class Produto {
     
-    private int cod_prod;
+    private int cod_produto;
     private String nome;
     private String cod_barras;
     private String fabricante;
     private String modelo;
 
     public int getCodProd() {
-        return cod_prod;
+        return cod_produto;
     }
 
-    public void setCodProd(int cod_prod) {
-        this.cod_prod = cod_prod;
+    public void setCodProd(int cod_produto) {
+        this.cod_produto = cod_produto;
     }
 
     public String getNome() {
@@ -58,6 +52,4 @@ public class Produto {
     public void setModelo(String modelo){        
         this.modelo = modelo;
     }
-
-
 }

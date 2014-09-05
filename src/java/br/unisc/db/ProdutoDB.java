@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package br.unisc.db;
 
 import br.unisc.model.Produto;
 import br.unisc.utils.Config;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,11 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -32,6 +19,11 @@ public class ProdutoDB {
     
     public ProdutoDB() throws ClassNotFoundException{
         Class.forName("org.postgresql.Driver");
+    }
+    
+    public Connection getConnection() throws SQLException{
+        return DriverManager.getConnection("jdbc:postgresql://" + Config.get("host")
+                + ":5432/" + Config.get("database"), Config.get("user"), Config.get("pass"));
     }
     
     public void inserir(Produto produto){
@@ -66,13 +58,9 @@ public class ProdutoDB {
         }
     }
     
-    public Connection getConnection() throws SQLException{
-        return DriverManager.getConnection("jdbc:postgresql://"+Config.get("host")+":5432/"+Config.get("database"), Config.get("user"), Config.get("pass"));
-    }
-    
     public void atualizar(Produto produto){
         String sql = "update produto set nome=?, cod_barras=?, fabricante=?, modelo=? "
-                + " where cod_prod = ? ";
+                + " where cod_produto = ? ";
         try {
             Connection conn = getConnection();
             PreparedStatement prep = conn.prepareStatement(sql);
@@ -98,16 +86,14 @@ public class ProdutoDB {
             
             while (rs.next()){
                 Produto objprodutoList = new Produto();
-                objprodutoList.setCodProd(rs.getInt("cod_prod"));
+                objprodutoList.setCodProd(rs.getInt("cod_produto"));
                 objprodutoList.setNome(rs.getString("nome"));
                 objprodutoList.setCodBarras(rs.getString("cod_barras"));
                 objprodutoList.setFabricante(rs.getString("fabricante"));
                 objprodutoList.setModelo(rs.getString("modelo"));
                 
                 produtos.add(objprodutoList);
-            }
-            
-            
+            }      
         } catch (SQLException ex){
             ex.printStackTrace();
         }

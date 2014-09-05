@@ -29,10 +29,6 @@ public class ProdutoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("Use os links de navegação!");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,7 +58,8 @@ public class ProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+        try (PrintWriter out = response.getWriter()) {
+        out.println("Chamou POST</br>");
         Produto prod = new Produto();
         prod.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
         prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
@@ -70,15 +67,12 @@ public class ProdutoServlet extends HttpServlet {
         prod.setFabricante(request.getParameter("fabricante"));
         prod.setModelo(request.getParameter("modelo"));
         
-        try {
-            ProdutoDB prodDB = new ProdutoDB();
-            prodDB.inserir(prod);
-        } catch (ClassNotFoundException ex) {
+        ProdutoDB prodDB = new ProdutoDB();
+        prodDB.inserir(prod);
+    }   catch (ClassNotFoundException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-    }
+}
 
     /**
      * Returns a short description of the servlet.

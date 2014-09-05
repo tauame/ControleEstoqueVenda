@@ -39,7 +39,7 @@
             </table>
         </form>  
         
-        <h3> <a href="index.jsp"> Volar </a> </h3>
+        <h3> <a href="index.jsp"> Voltar </a> </h3>
         
     </body>
 </html>

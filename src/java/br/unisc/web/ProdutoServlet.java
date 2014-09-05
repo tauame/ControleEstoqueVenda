@@ -56,10 +56,10 @@ public class ProdutoServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
         try (PrintWriter out = response.getWriter()) {
-            out.println("Chamou POST - ProdutoServelet.doPost (ProdutoServelet.java).</br>");
+            //out.println("Chamou POST - ProdutoServelet.doPost (ProdutoServelet.java).</br>");
             Produto prod = new Produto();
             // prod.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
             prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
@@ -67,8 +67,14 @@ public class ProdutoServlet extends HttpServlet {
             prod.setFabricante(request.getParameter("fabricante"));
             prod.setModelo(request.getParameter("modelo"));
         
-        ProdutoDB prodDB = new ProdutoDB();
-        prodDB.inserir(prod);
+            ProdutoDB prodDB = new ProdutoDB();
+            prodDB.inserir(prod);
+            
+            out.println("cadástro com Sucesso.</br></br>");
+            out.println("<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
+            
+            
+            
     }   catch (ClassNotFoundException ex) {
             Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

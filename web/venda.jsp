@@ -14,7 +14,7 @@
     <body>
         <h1>Cadastrar Venda</h1>
         
-        <form action="venda.do" method="post">
+        <form action="Venda.do" method="post">
             <table>
                 <tr>
                     <td> Código do Produto: </td>

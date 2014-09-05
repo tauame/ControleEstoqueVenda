@@ -67,9 +67,11 @@ public class EstoqueServlet extends HttpServlet {
             out.println("Chamou POST - EstoqueServelet.doPost (EstoqueServelet.java).</br>");
             Estoque estoq = new Estoque();
             estoq.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
+            out.println(estoq.getCod_produto()+".</br>");
             estoq.setCod_estoque(Integer.valueOf(request.getParameter("cod_estoque")));
-            estoq.setQtd_produto(Integer.valueOf(request.getParameter("qtd_produto")));
-            estoq.setValidade(request.getParameter("validade"));
+            out.println(estoq.getCod_estoque()+".</br>");
+            //estoq.setQtd_produto(Integer.valueOf(request.getParameter("qtd_produto")));
+            //estoq.setValidade(request.getParameter("validade"));
         
             EstoqueDB estoqDB = new EstoqueDB();
             estoqDB.inserir(estoq);

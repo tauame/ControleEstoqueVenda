@@ -22,16 +22,21 @@ public class EstoqueDB {
     }
     
     public void inserir(Estoque estoque){
-        String sql = "insert into estoque "
+        /*String sql = "insert into estoque "
                 + "(cod_estoque, cod_produto, qtd_produto, validade) "
                 + " values (?,?,?,?) ";
+        */
+        String sql = "insert into estoque "
+                + "(cod_estoque, cod_produto, qtd_produto) "
+                + " values (?,?,?) ";
+        
         try {
             Connection conn = getConnection();
             PreparedStatement prep = conn.prepareStatement(sql);
             prep.setInt(1, estoque.getCod_estoque());
             prep.setInt(2, estoque.getCod_produto());
             prep.setInt(3, estoque.getQtd_produto());
-            prep.setString(4, estoque.getValidade());
+            //prep.setString(4, estoque.getValidade());
             prep.execute();
             
         } catch (SQLException ex) {

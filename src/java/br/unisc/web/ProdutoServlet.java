@@ -61,9 +61,8 @@ public class ProdutoServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             out.println("Chamou POST - ProdutoServelet.doPost (ProdutoServelet.java).</br>");
             Produto prod = new Produto();
-            // prod.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
+            prod.setNome(request.getParameter("nome"));            
             prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
-            prod.setNome(request.getParameter("nome"));
             prod.setFabricante(request.getParameter("fabricante"));
             prod.setModelo(request.getParameter("modelo"));
         

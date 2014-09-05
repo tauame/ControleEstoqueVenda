@@ -14,7 +14,7 @@
     <body>
         <h1>Cadastrar Produtos em Estoque</h1>
         
-        <form action="FornecedorServlet" method="post">
+        <form action="estoque.do" method="post">
             <table>
                 <tr>
                     <td> Código do estoque: </td>

@@ -14,7 +14,7 @@
     <body>
         <h1>Cadastrar Venda</h1>
         
-        <form action="FornecedorServlet" method="post">
+        <form action="venda.do" method="post">
             <table>
                 <tr>
                     <td> Código do Produto: </td>

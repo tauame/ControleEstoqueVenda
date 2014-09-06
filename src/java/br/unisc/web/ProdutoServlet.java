@@ -4,6 +4,8 @@ import br.unisc.db.ProdutoDB;
 import br.unisc.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -101,7 +103,7 @@ public class ProdutoServlet extends HttpServlet {
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }
+}
 
     /**
      * Returns a short description of the servlet.

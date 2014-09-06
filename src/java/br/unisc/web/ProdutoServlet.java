@@ -54,7 +54,7 @@ public class ProdutoServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
         
         String acao = request.getParameter("acao");
@@ -70,12 +70,10 @@ public class ProdutoServlet extends HttpServlet {
                 prod.setFabricante(request.getParameter("fabricante"));
                 prod.setModelo(request.getParameter("modelo"));
                 prodDB.inserir(prod);
-                
                 try (PrintWriter out = response.getWriter()) {
                     out.println("<h2>Produto inserido com sucesso!</h2>"
                             + "<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
                 }
-                
             } else if (acao.equalsIgnoreCase("Atualizar")) {
                 
                 prod.setNome(request.getParameter("nome"));            

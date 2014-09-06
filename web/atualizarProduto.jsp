@@ -1,7 +1,7 @@
 <%-- 
-    Document   : teste
-    Created on : 29/08/2014, 20:11:21
-    Author     : tauame
+    Document   : atualizarProduto
+    Created on : 05/09/2014, 20:32:06
+    Author     : Eduardo
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,13 +9,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Atualizando Cadastro de Produto</title>
     </head>
     <body>
-        <h1>Cadastrar Produtos</h1>
+        <h1>Atualizar Produto</h1>
         
         <form action="Produto.do" method="post">
             <table>
+                <tr>
+                    <td> Código do Produto: </td>
+                    <td> <input type="text" name="cod_produto" id="cod_produto"/> </td>
+                </tr>
                 <tr>
                     <td> Nome: </td>
                     <td> <input type="text" name="nome" id="nome"/> </td>
@@ -34,12 +38,11 @@
                 </tr>
                 <tr>
                     <td> </td>
-                    <td> <input type="submit" value="Inserir Produto"/> </td>
+                    <td> <input type="submit" name="acao" value="Atualizar"/> </td>
                 </tr>
             </table>
         </form>  
         
-        <h3> <a href="index.jsp"> Volar </a> </h3>
-        
+        <h3> <a href="index.jsp"> Voltar </a> </h3>
     </body>
 </html>

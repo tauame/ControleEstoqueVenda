@@ -45,7 +45,7 @@ public class ProdutoDB {
     }
     
     public void deletar(int codigo){
-        String sql = "delete from produto where codigo = ? ";
+        String sql = "delete from produto where cod_produto = ? ";
         try {
             Connection conn = getConnection();
             PreparedStatement prep = conn.prepareStatement(sql);
@@ -68,6 +68,7 @@ public class ProdutoDB {
             prep.setInt(2, produto.getCod_barras());
             prep.setString(3, produto.getFabricante());
             prep.setString(4, produto.getModelo());
+            prep.setInt(5, produto.getCod_produto());
             prep.execute();
             
         } catch (SQLException ex){

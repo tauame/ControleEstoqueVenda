@@ -4,8 +4,6 @@ import br.unisc.db.ProdutoDB;
 import br.unisc.model.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,20 +56,54 @@ public class ProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        try (PrintWriter out = response.getWriter()) {
-            out.println("Chamou POST - ProdutoServelet.doPost (ProdutoServelet.java).</br>");
-            Produto prod = new Produto();
-            prod.setNome(request.getParameter("nome"));            
-            prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
-            prod.setFabricante(request.getParameter("fabricante"));
-            prod.setModelo(request.getParameter("modelo"));
         
-        ProdutoDB prodDB = new ProdutoDB();
-        prodDB.inserir(prod);
-    }   catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProdutoServlet.class.getName()).log(Level.SEVERE, null, ex);
+        String acao = request.getParameter("acao");
+        Produto prod = new Produto();
+        
+        try {
+            ProdutoDB prodDB = new ProdutoDB();
+                       
+            if (acao.equalsIgnoreCase("Inserir")) {
+                
+                prod.setNome(request.getParameter("nome"));            
+                prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
+                prod.setFabricante(request.getParameter("fabricante"));
+                prod.setModelo(request.getParameter("modelo"));
+                prodDB.inserir(prod);
+                
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("<h2>Produto inserido com sucesso!</h2>"
+                            + "<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
+                }
+                
+            } else if (acao.equalsIgnoreCase("Atualizar")) {
+                
+                prod.setNome(request.getParameter("nome"));            
+                prod.setCod_barras(Integer.valueOf(request.getParameter("cod_barras")));
+                prod.setFabricante(request.getParameter("fabricante"));
+                prod.setModelo(request.getParameter("modelo"));
+                prod.setCod_produto(Integer.valueOf(request.getParameter("cod_produto")));
+                prodDB.atualizar(prod);
+                
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("<h2>Produto atualizado com sucesso!</h2>"
+                            + "<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
+                }
+            
+            } else if (acao.equalsIgnoreCase("Deletar")) {
+                int cod_delecao = Integer.valueOf(request.getParameter("cod_produto"));
+                prodDB.deletar(cod_delecao);
+                
+                try (PrintWriter out = response.getWriter()) {
+                    out.println("<h2>Produto deletado com sucesso!</h2>"
+                            + "<h3> <a href=\"index.jsp\"> Voltar </a> </h3>");
+                }
+            }
+ 
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-}
+    }
 
     /**
      * Returns a short description of the servlet.
